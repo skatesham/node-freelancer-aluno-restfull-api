@@ -1,0 +1,2 @@
+db.usuarios.createIndex({"email": 1}, {unique: true})
+db.usuarios.createIndex({"tel": 1}, {unique: true})
