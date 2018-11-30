@@ -22,8 +22,8 @@ var usuarioSchema = new Schema({
 
 
 // Create Indexes
-usuarioSchema.index({tel:1}, {unique:true});
-usuarioSchema.index({email:1}, {unique:true});
+usuarioSchema.index({ tel: 1 }, { unique: true });
+usuarioSchema.index({ email: 1 }, { unique: true });
 
 
 module.exports = mongoose.model('Usuarios', usuarioSchema);
