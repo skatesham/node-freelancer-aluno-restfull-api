@@ -4,18 +4,20 @@ var express = require('express');
 var mongoose = require('mongoose');
 bodyParser = require('body-parser');
 var cors = require('cors');
+var dotenv = require('dotenv');
 // Dependencias Locais
 var Usuario = require('./app/models/usuarioModel');
 var routes = require('./app/routes/usuarioRoutes');
 
+// LOAD ENV CONFIGS
+dotenv.config();
 
 // Configurando Banco de Dados
-mongoURI = "mongodb://localhost/freelancer";
 mongoOptions = { useNewUrlParser: true };
 mongoose.Promise = global.Promise;
-mongoose.connect(mongoURI, mongoOptions);
+mongoose.connect(process.env.MONGODB, mongoOptions);
 mongoose.connection.on('error', (err) => {
-    console.error('MongoDB connection error: ${err}');
+    console.error('MongoDB connection error: '+err);
     process.exit(1);
 });
 
