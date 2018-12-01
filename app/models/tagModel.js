@@ -8,9 +8,9 @@ var tagSchema = new Schema({
     nome: { type: String }
 });
 
-tagSchema.index({ tag: 1 }, { unique: true });
+tagSchema.index({ nome: 1 }, { unique: true });
 
-tagSchema.static.findOneOrCreate = function findOneOrCreate(condition, callback) {
+tagSchema.statics.findOneOrCreate = function findOneOrCreate(condition, callback) {
     const self = this;
     self.findOne(condition, (err, result) => {
         return result ? callback(err, result) : self.create(condition, (err, result) => {

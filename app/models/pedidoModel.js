@@ -15,4 +15,6 @@ pedidoSchema = new Schema({
     avaliado: { type: boolean, default: false }
 });
 
+pedidoSchema.index({usuario_id: 1});
+
 module.exports = mongoose.model('Pedidos', pedidoSchema);
