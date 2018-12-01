@@ -7,13 +7,19 @@ var cors = require('cors');
 var dotenv = require('dotenv');
 // Dependencias Locais
 var Usuario = require('./app/models/usuarioModel');
-var routes = require('./app/routes/usuarioRoutes');
+var Tag = require('./app/models/tagModel');
+
+var routesTag = require('./app/routes/tagRoutes');
+var routesUsuario = require('./app/routes/usuarioRoutes');
 
 // LOAD ENV CONFIGS
 dotenv.config();
 
 // Configurando Banco de Dados
-mongoOptions = { useNewUrlParser: true };
+mongoOptions = { 
+    useNewUrlParser: true,
+    useCreateIndex: true
+};
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB, mongoOptions);
 mongoose.connection.on('error', (err) => {
@@ -27,6 +33,7 @@ app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors({ origin: true }));
-routes(app);
+routesUsuario(app);
+routesTag(app);
 app.listen(port);
 console.log('Freelancer Aluno RESTful API server disponível em: http://localhost:' + port);
