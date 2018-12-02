@@ -12,10 +12,15 @@ var Tag = require('./app/models/tagModel');
 var Pedido = require('./app/models/pedidoModel');
 var Proposta = require('./app/models/PropostaModel');
 
+
+// Routes
 var routesTag = require('./app/routes/tagRoutes');
 var routesUsuario = require('./app/routes/usuarioRoutes');
 var routesPedido = require('./app/routes/pedidoRoutes');
 var routesPropostas = require('./app/routes/propostaRoutes');
+
+// Security
+var routesAuth = require('./app/routes/authRoutes');
 
 // LOAD ENV CONFIGS
 dotenv.config();
@@ -44,6 +49,10 @@ routesUsuario(app);
 routesTag(app);
 routesPedido(app);
 routesPropostas(app);
+
+
+// Set Security
+routesAuth(app);
 
 // Ativando Servidor
 app.listen(port);
