@@ -4,15 +4,19 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
-pedidoSchema = new Schema({
-    usuario_id: { type: String },
+var pedidoSchema = new Schema({
+    usuario_id: { type: Schema.Types.ObjectId },
     titulo: { type: String },
     disciplina: { type: String },
     descricao: { type: String },
     proposta: { type: String },
-    tags: { type: [String] },
-    aberto: { type: boolean, default: false },
-    avaliado: { type: boolean, default: false }
+    tags: { type: [Schema.Types.ObjectId] },
+    aberto: { type: Boolean, default: false },
+    avaliado: { type: Boolean, default: false },
+    Created_date: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 pedidoSchema.index({usuario_id: 1});

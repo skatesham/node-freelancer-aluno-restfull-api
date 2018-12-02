@@ -5,12 +5,15 @@ var mongoose = require('mongoose');
 bodyParser = require('body-parser');
 var cors = require('cors');
 var dotenv = require('dotenv');
+
 // Dependencias Locais
 var Usuario = require('./app/models/usuarioModel');
 var Tag = require('./app/models/tagModel');
+var Pedido = require('./app/models/pedidoModel')
 
 var routesTag = require('./app/routes/tagRoutes');
 var routesUsuario = require('./app/routes/usuarioRoutes');
+var routesPedido = require('./app/routes/pedidoRoutes')
 
 // LOAD ENV CONFIGS
 dotenv.config();
@@ -33,7 +36,13 @@ app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors({ origin: true }));
+
+// Ativando Rotas
 routesUsuario(app);
 routesTag(app);
+routesPedido(app);
+
+
+// Ativando Servidor
 app.listen(port);
 console.log('Freelancer Aluno RESTful API server disponível em: http://localhost:' + port);

@@ -5,7 +5,11 @@ mongoose.Promise = global.Promise;
 var Schema = mongoose.Schema;
 
 var tagSchema = new Schema({
-    nome: { type: String }
+    nome: { type: String },
+    Created_date: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 tagSchema.index({ nome: 1 }, { unique: true });

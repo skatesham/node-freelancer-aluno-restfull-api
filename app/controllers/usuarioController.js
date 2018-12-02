@@ -50,7 +50,7 @@ exports.delete_a_usuario = function (req, res) {
         if (err) {
             res.send(err);
         }
-        res.json(usr);
+        res.json({ message:"Usuario excluido com sucesso", usr });
     });
 }
 

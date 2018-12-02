@@ -12,7 +12,11 @@ propostaSchema = new Schema({
     titulo: { type: String },
     aberto: { type: boolean, default: false },
     aceita: { type: boolean, default: false },
-    avaliado: { type: boolean, default: false }
+    avaliado: { type: boolean, default: false },
+    Created_date: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 module.exports = mongoose.model("Propostas", propostaSchema);
