@@ -36,7 +36,7 @@ exports.read_a_usuario = function (req, res) {
 
 //put /:usrId
 exports.update_a_usuario = function (req, res) {
-    Usuario.findOneAndUpdate({ _id: req.params.usrId }, function (err, usr) {
+    Usuario.findOneAndUpdate({ _id: req.params.usrId }, req.body, {new : true}, function (err, usr) {
         if (err) {
             res.send(err);
         }

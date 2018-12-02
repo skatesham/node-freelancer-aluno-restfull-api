@@ -9,11 +9,13 @@ var dotenv = require('dotenv');
 // Dependencias Locais
 var Usuario = require('./app/models/usuarioModel');
 var Tag = require('./app/models/tagModel');
-var Pedido = require('./app/models/pedidoModel')
+var Pedido = require('./app/models/pedidoModel');
+var Proposta = require('./app/models/PropostaModel');
 
 var routesTag = require('./app/routes/tagRoutes');
 var routesUsuario = require('./app/routes/usuarioRoutes');
-var routesPedido = require('./app/routes/pedidoRoutes')
+var routesPedido = require('./app/routes/pedidoRoutes');
+var routesPropostas = require('./app/routes/propostaRoutes');
 
 // LOAD ENV CONFIGS
 dotenv.config();
@@ -41,7 +43,7 @@ app.use(cors({ origin: true }));
 routesUsuario(app);
 routesTag(app);
 routesPedido(app);
-
+routesPropostas(app);
 
 // Ativando Servidor
 app.listen(port);

@@ -13,7 +13,7 @@ var pedidos = require('../controllers/pedidoController');
         .put(pedidos.update_a_pedido)
         .delete(pedidos.delete_a_pedido);
 
-    app.route('pedidosByUsuario/:usuarioId')
+    app.route('/pedidosByUsuario/:usuarioId')
         .get(pedidos.list_by_usuario);
 
 }

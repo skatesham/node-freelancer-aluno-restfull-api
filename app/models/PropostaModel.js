@@ -4,19 +4,20 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
-propostaSchema = new Schema({
-    id: number,
-    usuario_id: { type: String },
+var propostaSchema = new Schema({
+    usuario_id: { type: Schema.Types.ObjectId },
     descricao: { type: String },
-    pedido_id: { type: String },
+    pedido_id: { type: Schema.Types.ObjectId },
     titulo: { type: String },
-    aberto: { type: boolean, default: false },
-    aceita: { type: boolean, default: false },
-    avaliado: { type: boolean, default: false },
+    aberto: { type: Boolean, default: false },
+    aceita: { type: Boolean, default: false },
+    avaliado: { type: Boolean, default: false },
     Created_date: {
         type: Date,
         default: Date.now
     }
 });
+
+propostaSchema.index({usuario_id:1, pedido_id:1}, {unique:true});
 
 module.exports = mongoose.model("Propostas", propostaSchema);
