@@ -10,8 +10,6 @@ var Usuario = mongoose.model('Usuarios');
 // LOAD ENV CONFIGS
 dotenv.config();
 
-const config = require('../../config');
-
 exports.login = function (req, res) {
     var user = req.body;
     if (!user.email || !user.senha) {
@@ -44,6 +42,9 @@ exports.login = function (req, res) {
     });
 };
 
+/**
+ * Função não está funcionando
+ */
 exports.isLoggedIn = function (req, res, next) {
     // check header or url parameters or post parameters for token
     var token = req.headers.authorization;

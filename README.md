@@ -15,3 +15,6 @@ As rotas da api envolvem GET, POST, PUT, DELETE, entre outras. Algumas rotas com
 
 ## Modelo Banco de dados
 Em breve..
+
+## Para utilização
+Crie um arquivo `.env`
