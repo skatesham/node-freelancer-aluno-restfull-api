@@ -4,18 +4,20 @@ module.exports = function (app) {
 
     var proposta = require('../controllers/propostaController');
 
+    var jwtMW = require('../libs/auth');
+
     app.route("/propostas")
-        .get(proposta.list_all_propostas)
-        .post(proposta.create_a_proposta);
+        .get(jwtMW, proposta.list_all_propostas)
+        .post(jwtMW, proposta.create_a_proposta);
 
     app.route("/propostas/:propostaId")
-        .get(proposta.read_a_pedido)
-        .put(proposta.update_a_pedido)
-        .delete(proposta.delete_a_pedido);
+        .get(jwtMW, proposta.read_a_pedido)
+        .put(jwtMW, proposta.update_a_pedido)
+        .delete(jwtMW, proposta.delete_a_pedido);
 
     app.route("/propostasByUsuario/:usuarioId")
-        .get(proposta.propostas_by_usuario_id)
+        .get(jwtMW, proposta.propostas_by_usuario_id)
 
     app.route("/propostasByPedido/:pedidoId")
-        .get(proposta.propostas_by_pedido_id);
+        .get(jwtMW, proposta.propostas_by_pedido_id);
 }

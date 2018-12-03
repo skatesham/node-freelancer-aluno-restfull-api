@@ -21,6 +21,7 @@ var routesPropostas = require('./app/routes/propostaRoutes');
 
 // Security
 var routesAuth = require('./app/routes/authRoutes');
+var jwtMW = require('./app/libs/auth')
 
 // LOAD ENV CONFIGS
 dotenv.config();
@@ -49,7 +50,6 @@ routesUsuario(app);
 routesTag(app);
 routesPedido(app);
 routesPropostas(app);
-
 
 // Set Security
 routesAuth(app);
