@@ -14,32 +14,33 @@ exports.login = function (req, res) {
     var user = req.body;
     if (!user.email || !user.senha) {
         res.status(400).send("Você precisa enviar um email e senha");
-    };
-    Usuario.findOne({ email: user.email }, (err, usuario) => {
-        if (err) {
-            res.send(err);
-        }
-        // creating hash for password
-        if (!usuario || SHA256(user.senha) != usuario.senha) {
-            res.status(401).send("email e senha não conferem com nenhum documento do sistema");
-        } else {
-            usuario.senha = null;
-            const payload = {
-                nick: usuario.nick,
-                email: usuario.email
+    } else {
+        Usuario.findOne({ email: user.email }, (err, usuario) => {
+            if (err) {
+                res.send(err);
             }
-            const expiresIn = Date.now() + (100 * 60 * 60);
-            var token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
-            res.status(201).json(
-                {
-                    "mensagem": "Login realizado com sucesso",
-                    "success": true,
-                    "token": token,
-                    "expiresIn": expiresIn,
-                    usuario
-                });
-        };
-    });
+            // creating hash for password
+            if (!usuario || SHA256(user.senha) != usuario.senha) {
+                res.status(401).send("email e senha não conferem com nenhum documento do sistema");
+            } else {
+                usuario.senha = null;
+                const payload = {
+                    nick: usuario.nick,
+                    email: usuario.email
+                }
+                const expiresIn = Date.now() + (100 * 60 * 60);
+                var token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
+                res.status(201).json(
+                    {
+                        "mensagem": "Login realizado com sucesso",
+                        "success": true,
+                        "token": token,
+                        "expiresIn": expiresIn,
+                        usuario
+                    });
+            };
+        });
+    }
 };
 
 /**
