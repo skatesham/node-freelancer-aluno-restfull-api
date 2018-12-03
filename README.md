@@ -7,7 +7,7 @@ A API RESTful satisfaz todas as rotas necessárias para a aplicação angular 6.
 ## Rotas
 As rotas da api envolvem GET, POST, PUT, DELETE em uma rotas do [servidor](https://freelancer-aluno.herokuapp.com/)... As rotas bases são:
 
-1. `/login` Essa rota reponde a POST com corpo `{email, senha}`
+1. `/login` Essa rota responde a POST com corpo `{email, senha}`
 2. `/usuarios` Autenticada por Token
 3. `/pedidos` Autenticada por Token
 4. `/propostas` Autenticada por Token
@@ -17,7 +17,7 @@ Um  usuario pode ser criado através de um POST em `/usuarios` com um corpo de `
 
 #### Exemplo de cadastro
 Request: `POST`  
-Rota: [/usuario](https://freelancer-aluno.herokuapp.com/usuarios)  
+Rota: [/usuarios](https://freelancer-aluno.herokuapp.com/usuarios)  
 ```
 {
 	"nick": "Shazan",
