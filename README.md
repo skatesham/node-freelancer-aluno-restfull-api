@@ -5,16 +5,39 @@ A RESTful API com Node Express foi desenvolvida para alimentar a aplicação [Fr
 A API RESTful satisfaz todas as rotas necessárias para a aplicação angular 6.
 
 ## Rotas
-As rotas da api envolvem GET, POST, PUT, DELETE, entre outras. Algumas rotas com métodos HTTP tipo get disponíveis (já que são acessíveis por navegador).
+As rotas da api envolvem GET, POST, PUT, DELETE em uma rotas do [servidor](https://freelancer-aluno.herokuapp.com/)... As rotas bases são:
 
-- [Buscar todos Usuarios](https://freelancer-aluno.herokuapp.com/usuarios/)
+1. `/login` Essa rota reponde a POST com corpo `{email, senha}`
+2. `/usuarios` Autenticada por Token
+3. `/pedidos` Autenticada por Token
+4. `/propostas` Autenticada por Token
+5. `/tags` Autenticada por Token
 
-- [Buscar Usuario por ID](https://freelancer-aluno.herokuapp.com/usuarios/5c012fdcf7f1080004569c77)
+Um  usuario pode ser criado através de um POST em `/usuarios` com um corpo de `{nick, email, senha, tel}`
 
-- Novas Rotas em Breve.
+#### Exemplo de cadastro
+Request: `POST`  
+Rota: [/usuario](https://freelancer-aluno.herokuapp.com/usuarios)  
+```
+{
+	"nick": "Shazan",
+	"email": "sham.vinicius@gmail.com",
+	"senha": "supersenha",
+	"tel": "12996657941"
+}
+```
+  
+Pode tambem ser realizado por `curl`, dessa maneira:
+```
+curl -d "nick=usuario&email=jhon@gmail.com&senha=strong&tel=12987654321" -X POST https://freelancer-aluno.herokuapp.com/usuarios
+```
 
 ## Modelo Banco de dados
 Em breve..
 
-## Para utilização
-Crie um arquivo `.env`
+## Para desenvolvimento
+Crie um arquivo `.env` com:
+```
+MONGODB = 'mongodb://localhost/freelancer'
+JWT_SECRET = 'secret';
+```
