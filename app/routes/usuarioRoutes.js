@@ -17,6 +17,6 @@ module.exports = function (app) {
         .delete(jwtMW, usuarios.delete_a_usuario);
 
     app.route('/usuariosByEmail/:email')
-        .get(jwtMW, usuarios.read_by_email_usuario);
+        .get(usuarios.read_by_email_usuario);
 
 }
