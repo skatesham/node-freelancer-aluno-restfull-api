@@ -42,7 +42,8 @@ mongoose.connection.on('error', (err) => {
 //Configurando Servidor
 port = process.env.PORT || 3000;
 app = express();
-//app(express.json({limit = '500kb'}));
+
+app(express.json({limit = '500kb'}));
 app.use(bodyParser.urlencoded({ extended: true, limit: '500kb' }));
 app.use(bodyParser.json());
 app.use(helmet());
