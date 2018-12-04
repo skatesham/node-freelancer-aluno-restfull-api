@@ -43,7 +43,7 @@ mongoose.connection.on('error', (err) => {
 port = process.env.PORT || 3000;
 app = express();
 
-app(express.json({limit = '500kb'}));
+app.use(bodyParser.json({ limit: "500kb", type:'application/json'}));
 app.use(bodyParser.urlencoded({ extended: true, limit: '500kb' }));
 app.use(bodyParser.json());
 app.use(helmet());
