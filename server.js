@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 bodyParser = require('body-parser');
 var cors = require('cors');
 var dotenv = require('dotenv');
+var helmet = require('helmet');
 
 // Dependencias Locais
 var Usuario = require('./app/models/usuarioModel');
@@ -43,7 +44,9 @@ port = process.env.PORT || 3000;
 app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors({ origin: true }));
+app.use(helmet());
+//app.use(cors({ origin: true }));
+app.use(cors());
 
 // Ativando Rotas
 routesUsuario(app);
