@@ -9,6 +9,9 @@ module.exports = function (app) {
     app.route('/tags')
         .get(tags.list_all_tags);
 
+  	app.route('/tag:tagId')
+  		.get(tags.get_a_tag);
+
     app.route('/tags/:tag')
         .get(tags.get_or_create);
 
